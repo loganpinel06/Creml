@@ -2,7 +2,11 @@
 
 "use client";
 
+import { useState } from "react";
+import SignUpForm from "../SignUpForm";
+
 export default function Header() {
+  const [showModal, setShowModal] = useState(false);
   return (
     <nav className="bg-white shadow-md fixed w-full top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -37,13 +41,39 @@ export default function Header() {
                 Contact
               </a>
               {/* Get Started Button */}
-              <button className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors">
+              <button
+                onClick={() => setShowModal(true)}
+                className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors cursor-pointer"
+              >
                 Get Started
               </button>
             </div>
           </div>
         </div>
       </div>
+      {/* Modal */}
+      {showModal && (
+        //blur background, center modal, close on click outside
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/50"
+          onClick={() => setShowModal(false)}
+        >
+          {/* main modal box */}
+          <div
+            className="bg-white rounded-lg shadow-lg w-full max-w-md p-6 relative"
+            onClick={(e) => e.stopPropagation()} //prevent click from closing modal when clicking inside
+          >
+            {/* close button */}
+            <button
+              onClick={() => setShowModal(false)}
+              className="absolute top-3 right-3 text-gray-500 hover:text-gray-700 text-lg font-bold cursor-pointer"
+            >
+              &times;
+            </button>
+            <SignUpForm />
+          </div>
+        </div>
+      )}
     </nav>
   );
 }
