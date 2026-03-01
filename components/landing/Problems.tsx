@@ -17,13 +17,13 @@ export default function Problems() {
             strokeLinecap="round"
             strokeLinejoin="round"
             strokeWidth="2"
-            d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M18 12h1M3 12h1m2.121-5.364l-.707-.707m12.728 0l-.707.707M5.636 16.364l-.707.707M16.364 16.364l-.707-.707"
+            d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z"
           />
         </svg>
       ),
-      title: "Inefficient Lead Generation",
+      title: "Billboard Mentality",
       description:
-        "Struggling to find qualified leads and wasting time on cold outreach with low conversion rates.",
+        "Brokers treat platforms like advertising billboards rather than serious listing services.",
       bgColorClass: "bg-red-100",
       iconColorClass: "text-red-600",
     },
@@ -39,15 +39,15 @@ export default function Problems() {
             strokeLinecap="round"
             strokeLinejoin="round"
             strokeWidth="2"
-            d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1"
+            d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2zM7 10l5 3 5-3"
           />
         </svg>
       ),
-      title: "Lack of Market Insights",
+      title: "Deal Bombardment",
       description:
-        "Difficulty accessing real-time market data and insights to make informed decisions.",
-      bgColorClass: "bg-yellow-100",
-      iconColorClass: "text-yellow-600",
+        "Investors get flooded with irrelevant deals that don't match their investment criteria.",
+      bgColorClass: "bg-orange-100",
+      iconColorClass: "text-orange-600",
     },
     {
       icon: (
@@ -61,15 +61,15 @@ export default function Problems() {
             strokeLinecap="round"
             strokeLinejoin="round"
             strokeWidth="2"
-            d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+            d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"
           />
         </svg>
       ),
-      title: "Time-Consuming Processes",
+      title: "No Standards",
       description:
-        "Spending too much time on manual tasks and administrative work instead of focusing on clients.",
-      bgColorClass: "bg-green-100",
-      iconColorClass: "text-green-600",
+        "No one enforces quality standars from the investor's perspective.",
+      bgColorClass: "bg-amber-100",
+      iconColorClass: "text-amber-600",
     },
     {
       icon: (
@@ -83,15 +83,15 @@ export default function Problems() {
             strokeLinecap="round"
             strokeLinejoin="round"
             strokeWidth="2"
-            d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1"
+            d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
           />
         </svg>
       ),
-      title: "Limited Collaboration Tools",
+      title: "Trash Listings",
       description:
-        "Difficulty collaborating with team members and sharing information effectively.",
-      bgColorClass: "bg-purple-100",
-      iconColorClass: "text-purple-600",
+        "Markets are flooded with incomplete, ego-priced garbage listings.",
+      bgColorClass: "bg-gray-100",
+      iconColorClass: "text-gray-600",
     },
   ];
 
