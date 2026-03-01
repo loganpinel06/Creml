@@ -8,7 +8,7 @@ export default function About() {
   ];
 
   return (
-    <section id="about" className="py-20 bg-white">
+    <section id="about" className="py-20 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div>
@@ -16,9 +16,9 @@ export default function About() {
               25+ Years of Commercial Real Estate Excellence
             </h2>
             <p className="text-lg text-gray-700 mb-6">
-              CreML Commercial has been the trusted partner for businesses,
-              investors, and property owners across the region. Our team of
-              seasoned professionals brings deep market knowledge and innovative
+              Creml has been the trusted partner for businesses, investors, and
+              property owners across the region. Our team of seasoned
+              professionals brings deep market knowledge and innovative
               solutions to every transaction.
             </p>
             <div className="space-y-4">

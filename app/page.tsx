@@ -6,6 +6,8 @@
 import Header from "@/components/landing/Header";
 //hero section with headline, subheadline, and call-to-action buttons
 import Hero from "@/components/landing/Hero";
+//problems section highlighting common pain points in commercial real estate
+import Problems from "@/components/landing/Problems";
 //services section highlighting key offerings with icons and descriptions
 import Services from "@/components/landing/Services";
 //about section with company history, mission, and team bios
@@ -24,6 +26,7 @@ export default function LandingPage() {
     <div className="min-h-screen bg-white">
       <Header />
       <Hero />
+      <Problems />
       <Services />
       <About />
       <Properties />
