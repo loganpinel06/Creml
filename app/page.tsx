@@ -28,10 +28,8 @@ export default function LandingPage() {
       <Hero />
       <Problems />
       <Services />
-      <About />
       <Properties />
       <Testimonials />
-      <Contact />
       <Footer />
     </div>
   );

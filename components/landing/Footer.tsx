@@ -1,6 +1,12 @@
 //Footer component for the landing page
 
+"use client";
+
+import Contact from "./Contact";
+import { useState } from "react";
+
 export default function Footer() {
+  const [showModalContact, setShowModalContact] = useState(false);
   const footerSections = [
     {
       title: "Services",
@@ -14,9 +20,13 @@ export default function Footer() {
     {
       title: "Quick Links",
       links: [
-        { label: "About Us", href: "#about" },
+        { label: "About Us", href: "/about" },
         { label: "Properties", href: "#properties" },
-        { label: "Contact", href: "#contact" },
+        {
+          label: "Contact",
+          href: "#contact",
+          onClick: () => setShowModalContact(true),
+        },
         { label: "Careers", href: "#" },
       ],
     },
@@ -52,7 +62,8 @@ export default function Footer() {
                   <li key={linkIndex}>
                     <a
                       href={link.href}
-                      className="hover:text-white transition-colors"
+                      className="hover:text-white transition-colors cursor-pointer"
+                      onClick={link.onClick}
                     >
                       {link.label}
                     </a>
@@ -76,6 +87,29 @@ export default function Footer() {
           <p>&copy; 2026 CreML Commercial. All rights reserved.</p>
         </div>
       </div>
+      {/* Contact Modal */}
+      {showModalContact && (
+        //blur background, center modal, close on click outside
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/50"
+          onClick={() => setShowModalContact(false)}
+        >
+          {/* main modal box */}
+          <div
+            className="bg-white rounded-lg shadow-lg w-full max-w-6xl p-6 relative"
+            onClick={(e) => e.stopPropagation()} //prevent click from closing modal when clicking inside
+          >
+            {/* close button */}
+            <button
+              onClick={() => setShowModalContact(false)}
+              className="absolute top-3 right-3 text-gray-500 hover:text-gray-700 text-lg font-bold cursor-pointer"
+            >
+              &times;
+            </button>
+            <Contact />
+          </div>
+        </div>
+      )}
     </footer>
   );
 }

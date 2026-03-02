@@ -103,8 +103,8 @@ export default function Problems() {
             The Problem with Current CRE Listings
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            The commercial real estate listings market is broken. Here's why
-            investors are frustrated:
+            The commercial real estate listings market is broken. <br />
+            Here's why investors are frustrated:
           </p>
         </div>
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -125,7 +125,7 @@ export default function Problems() {
             do exist...
           </p>
           <p className="text-l text-blue-600 font-semibold mx-auto mt-4">
-            There has to be a better way.
+            With Creml, there is a solution.
           </p>
         </div>
       </div>

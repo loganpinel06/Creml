@@ -1,14 +1,15 @@
-//About section for the landing page
+import Image from "next/image";
 
-export default function About() {
+export default function CompanyOverview() {
   const achievements = [
     "Over $2.5 billion in transactions completed",
     "500+ satisfied clients and growing",
     "Award-winning brokerage team",
+    "25+ years of industry experience",
   ];
 
   return (
-    <section id="about" className="py-20 bg-gray-50">
+    <section className="py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div>
@@ -16,10 +17,15 @@ export default function About() {
               25+ Years of Commercial Real Estate Excellence
             </h2>
             <p className="text-lg text-gray-700 mb-6">
-              Creml has been the trusted partner for businesses, investors, and
-              property owners across the region. Our team of seasoned
-              professionals brings deep market knowledge and innovative
+              CreML Commercial has been the trusted partner for businesses,
+              investors, and property owners across the region. Our team of
+              seasoned professionals brings deep market knowledge and innovative
               solutions to every transaction.
+            </p>
+            <p className="text-lg text-gray-700 mb-6">
+              Founded in 1998, we've weathered multiple market cycles and
+              emerged stronger each time. Our success is built on relationships,
+              reputation, and results that speak for themselves.
             </p>
             <div className="space-y-4">
               {achievements.map((achievement, index) => (
@@ -44,10 +50,13 @@ export default function About() {
               ))}
             </div>
           </div>
-          <div className="bg-gray-200 h-96 rounded-lg flex items-center justify-center">
-            <span className="text-gray-500 text-lg">
-              Professional Team Photo
-            </span>
+          <div className="relative h-96 rounded-lg overflow-hidden">
+            <Image
+              src="/florida-about.jpg"
+              alt="Florida City View"
+              fill
+              className="object-cover"
+            />
           </div>
         </div>
       </div>
