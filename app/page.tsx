@@ -10,8 +10,6 @@ import Hero from "@/components/landing/Hero";
 import Problems from "@/components/landing/Problems";
 //services section highlighting key offerings with icons and descriptions
 import Services from "@/components/landing/Services";
-//about section with company history, mission, and team bios
-import About from "@/components/landing/About";
 //properties section showcasing featured listings with images and details
 import Properties from "@/components/landing/Properties";
 //testimonials section with client quotes and success stories
