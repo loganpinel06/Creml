@@ -33,6 +33,37 @@ export default function SignUpForm({ selectedPlan = "free" }: SignUpFormProps) {
     });
   };
 
+  //BACKEND API CALL
+  const handleSignUp = async (
+    email: String,
+    password: String,
+    confirmPassword: String,
+  ) => {
+    try {
+      const res = await fetch("/api/auth/signup", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, password }),
+      });
+      //if api response is not ok, handle error
+      if (!res.ok) {
+        // Server returned an error status
+        const errorData = await res.json();
+        console.error("Signup failed:", errorData);
+        alert(`Signup failed: ${errorData.error || res.statusText}`);
+        return;
+      }
+      // Successful signup
+      const data = await res.json();
+      console.log("User created:", data);
+      alert(`Signup successful! Welcome ${data.user.email}`);
+    } catch (err) {
+      // Network or other unexpected errors
+      console.error("Unexpected error:", err);
+      alert("Something went wrong. Please try again later.");
+    }
+  };
+
   // Event handler for form submission
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
