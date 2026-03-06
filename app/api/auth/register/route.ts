@@ -1,3 +1,5 @@
+//backend register route to handle user signups with Supabase Auth
+
 import { NextResponse } from "next/server";
 import { createClient } from "@/lib/supabase/server"; // your server-side client
 
@@ -7,15 +9,7 @@ export async function POST(req: Request) {
     const supabase = await createClient();
 
     //get the email and password from the request body
-    const { email, password, confirmPassword } = await req.json();
-
-    //make sure passwords match before sending to Supabase
-    if (password !== confirmPassword) {
-      return NextResponse.json(
-        { error: "Passwords do not match" },
-        { status: 400 },
-      );
-    }
+    const { email, password } = await req.json();
 
     //sign the user up with Supabase
     const { data, error } = await supabase.auth.signUp({

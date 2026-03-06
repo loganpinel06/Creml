@@ -2,6 +2,7 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 interface SignUpFormProps {
   selectedPlan?: "free" | "pro";
@@ -24,6 +25,9 @@ export default function SignUpForm({ selectedPlan = "free" }: SignUpFormProps) {
 
   const isPro = selectedPlan === "pro";
 
+  //setup router for navigation after successful signup
+  const router = useRouter();
+
   // Handle input changes
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, type, checked, value } = e.target;
@@ -33,39 +37,8 @@ export default function SignUpForm({ selectedPlan = "free" }: SignUpFormProps) {
     });
   };
 
-  //BACKEND API CALL
-  const handleSignUp = async (
-    email: String,
-    password: String,
-    confirmPassword: String,
-  ) => {
-    try {
-      const res = await fetch("/api/auth/signup", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, password }),
-      });
-      //if api response is not ok, handle error
-      if (!res.ok) {
-        // Server returned an error status
-        const errorData = await res.json();
-        console.error("Signup failed:", errorData);
-        alert(`Signup failed: ${errorData.error || res.statusText}`);
-        return;
-      }
-      // Successful signup
-      const data = await res.json();
-      console.log("User created:", data);
-      alert(`Signup successful! Welcome ${data.user.email}`);
-    } catch (err) {
-      // Network or other unexpected errors
-      console.error("Unexpected error:", err);
-      alert("Something went wrong. Please try again later.");
-    }
-  };
-
   // Event handler for form submission
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError("");
     setSuccess("");
@@ -101,11 +74,42 @@ export default function SignUpForm({ selectedPlan = "free" }: SignUpFormProps) {
       return;
     }
 
-    // TODO: Connect to Supabase or backend here
-    setSuccess(
-      `Account created successfully! Welcome to Creml ${isPro ? "Professional" : "Free"} plan.`,
-    );
-    console.log("Sign up data:", { ...formData, plan: selectedPlan });
+    //BACKEND API CALL FOR SIGNUP
+    try {
+      //fetch backend API to create user with Supabase Auth
+      const res = await fetch("/api/auth/register", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          email: formData.email,
+          password: formData.password,
+          firstName: formData.firstName,
+          lastName: formData.lastName,
+          company: isPro ? formData.company : undefined,
+          plan: selectedPlan,
+        }),
+      });
+      //if api response is not ok, handle error
+      if (!res.ok) {
+        const errorData = await res.json();
+        setError(errorData.error || "Signup failed. Please try again.");
+        return;
+      }
+      //successful signup
+      const data = await res.json();
+      console.log("User created:", data);
+      //set the success message
+      setSuccess(
+        `Signup successful! Welcome ${data.user.email} to Creml ${isPro ? "Professional" : "Free"} plan.`,
+      );
+      console.log("Sign up data:", { ...formData, plan: selectedPlan });
+
+      //redirect to dashboard after short delay
+      setTimeout(() => router.push("/dashboard"), 1000);
+    } catch (err) {
+      console.error("Unexpected error:", err);
+      setError("Something went wrong. Please try again later.");
+    }
   };
 
   return (

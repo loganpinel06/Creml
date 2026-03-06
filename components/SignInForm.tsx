@@ -2,6 +2,7 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 export default function SignInForm() {
   //State for form fields and error/success messages
@@ -12,6 +13,9 @@ export default function SignInForm() {
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
 
+  //router instance for navigation
+  const router = useRouter();
+
   //Handle input changes
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({
@@ -21,7 +25,7 @@ export default function SignInForm() {
   };
 
   //Event handler for form submission
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError("");
     setSuccess("");
@@ -32,9 +36,37 @@ export default function SignInForm() {
       return;
     }
 
-    // TODO: Connect to Supabase or backend here
-    setSuccess("Welcome back to CreML Commercial!");
-    console.log("Sign in data:", formData);
+    //BACKEND API CALL FOR SIGNIN
+    try {
+      //fetch backend API to authenticate user with Supabase Auth
+      const res = await fetch("/api/auth/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          email: formData.email,
+          password: formData.password,
+        }),
+      });
+
+      //parse response data
+      const data = await res.json();
+
+      //handle errors from backend
+      if (!res.ok) {
+        setError(data.error || "Login failed. Please try again.");
+        return;
+      }
+
+      //set success message with user email if available
+      setSuccess(`Welcome back, ${data.user?.email || "User"}!`);
+      console.log("Sign in data:", formData);
+
+      //redirect to dashboard after short delay
+      setTimeout(() => router.push("/dashboard"), 500);
+    } catch (err) {
+      console.error("Unexpected login error:", err);
+      setError("Something went wrong. Please try again later.");
+    }
   };
 
   return (

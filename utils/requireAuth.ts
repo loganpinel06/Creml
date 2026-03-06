@@ -1,4 +1,5 @@
 //requireAuth.ts will protect all backend routes making them require authentication to access
+//mainly used for routes that interact with database
 import { NextResponse } from "next/server";
 import { SupabaseClient } from "@supabase/supabase-js"; //for typing
 
