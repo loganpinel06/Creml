@@ -77,6 +77,7 @@ export default function SignUpForm({ selectedPlan = "free" }: SignUpFormProps) {
     //BACKEND API CALL FOR SIGNUP
     try {
       //fetch backend API to create user with Supabase Auth
+      //this also triggers prisma to create the user in the database
       const res = await fetch("/api/auth/register", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -87,6 +88,7 @@ export default function SignUpForm({ selectedPlan = "free" }: SignUpFormProps) {
           lastName: formData.lastName,
           company: isPro ? formData.company : undefined,
           plan: selectedPlan,
+          role: "user",
         }),
       });
       //if api response is not ok, handle error
