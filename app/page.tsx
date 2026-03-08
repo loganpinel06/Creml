@@ -5,7 +5,7 @@
 //header component for navigation and branding
 import Header from "@/components/landing/Header";
 //main hero section with search functionality
-import HeroSearch from "@/components/HeroSearch";
+import HeroSearch from "@/components/landing/HeroSearch";
 //hero section with headline, subheadline, and call-to-action buttons
 import Hero from "@/components/landing/Hero";
 //problems section highlighting common pain points in commercial real estate
@@ -14,10 +14,6 @@ import Problems from "@/components/landing/Problems";
 import Services from "@/components/landing/Services";
 //properties section showcasing featured listings with images and details
 import Properties from "@/components/landing/Properties";
-//testimonials section with client quotes and success stories
-import Testimonials from "@/components/landing/Testimonials";
-//contact section with form and contact information
-import Contact from "@/components/landing/Contact";
 //footer component with additional links and company information
 import Footer from "@/components/landing/Footer";
 
@@ -29,7 +25,6 @@ export default function LandingPage() {
       <Problems />
       <Services />
       <Properties />
-      <Testimonials />
       <Footer />
     </div>
   );

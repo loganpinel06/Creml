@@ -7,7 +7,6 @@ import CompanyOverview from "@/components/about/CompanyOverview";
 import MissionVision from "@/components/about/MissionVision";
 import CoreValues from "@/components/about/CoreValues";
 import LeadershipTeam from "@/components/about/LeadershipTeam";
-import AboutCTA from "@/components/about/AboutCTA";
 
 export default function About() {
   return (
@@ -18,7 +17,6 @@ export default function About() {
       <MissionVision />
       <CoreValues />
       <LeadershipTeam />
-      <AboutCTA />
       <Footer />
     </div>
   );
