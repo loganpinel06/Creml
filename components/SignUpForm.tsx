@@ -1,4 +1,6 @@
 //Professional sign up form component
+//IGNORE SELECTED PLAN FOR NOW
+
 "use client";
 
 import { useState } from "react";
@@ -119,20 +121,11 @@ export default function SignUpForm({ selectedPlan = "free" }: SignUpFormProps) {
       <div className="bg-white rounded-lg shadow-lg p-8">
         <div className="text-center mb-8">
           <h2 className="text-3xl font-bold text-gray-900 mb-2">
-            Create Your {isPro ? "Professional" : "Free"} Account
+            Create Your Creml Account
           </h2>
           <p className="text-gray-600">
-            {isPro
-              ? "Join our professional network and unlock premium features"
-              : "Get started with our free plan and upgrade anytime"}
+            Get free access to our commercial real estate platform.
           </p>
-          {isPro && (
-            <div className="mt-4 p-3 bg-blue-50 rounded-lg">
-              <p className="text-blue-800 font-medium">
-                🎉 Professional Plan: $49/month • Full access to all features
-              </p>
-            </div>
-          )}
         </div>
 
         {/* Display error or success messages */}
