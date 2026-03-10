@@ -59,7 +59,6 @@ export default function SignInForm() {
 
       //set success message with user email if available
       setSuccess(`Welcome back, ${data.user?.email || "User"}!`);
-      console.log("Sign in data:", formData);
 
       //redirect to dashboard after short delay
       setTimeout(() => router.push("/dashboard"), 500);

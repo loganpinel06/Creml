@@ -40,6 +40,20 @@ export default function Header() {
     supabase.auth.getUser().then(({ data: { user }, error }) => {
       if (user) {
         setIsAuth(true);
+        //check if the user has a broker role in their metadata and set isBroker accordingly
+        //get necessary data by calling prisma API route (ASYNC)
+        const fetchUserData = async () => {
+          try {
+            const response = await fetch(`/api/users/${user.id}`);
+            const userData = await response.json();
+            if (userData.role === "broker") {
+              setIsBroker(true);
+            }
+          } catch (err) {
+            console.error("Error fetching user data:", err);
+          }
+        };
+        fetchUserData();
       } else {
         setIsAuth(false);
       }
@@ -80,6 +94,14 @@ export default function Header() {
                   >
                     Dashboard
                   </a>
+                  {isBroker && (
+                    <Link
+                      href="/newlisting"
+                      className="text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium"
+                    >
+                      Create Listing
+                    </Link>
+                  )}
                   <button
                     onClick={handleLogout}
                     className="bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 transition-colors cursor-pointer"

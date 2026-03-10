@@ -21,9 +21,24 @@ export async function POST(req: Request) {
     if (error) {
       return NextResponse.json({ error: error.message }, { status: 400 });
     }
+    //check if user data was not returned
+    if (!data.user) {
+      return NextResponse.json(
+        { error: "User creation failed" },
+        { status: 400 },
+      );
+    }
+    //get the created user id
+    const userId = data.user.id;
+
     //create the user in the database with
     const user = await prisma.users.create({
-      data: { email, name: `${firstName} ${lastName}`, role },
+      data: {
+        uid: userId,
+        email,
+        name: `${firstName} ${lastName}`,
+        role: role,
+      },
     });
     //return a success message
     return NextResponse.json({ message: "Signup successful", user });
