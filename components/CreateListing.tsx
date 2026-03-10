@@ -96,7 +96,7 @@ const CreateListing: React.FC<CreateListingProps> = ({ onClose, onSubmit }) => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen mt-18 bg-gray-50">
       {/* Header */}
       <div className="bg-white border-b border-gray-200">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -245,7 +245,7 @@ const CreateListing: React.FC<CreateListingProps> = ({ onClose, onSubmit }) => {
                     name="city"
                     value={formData.city}
                     onChange={handleInputChange}
-                    placeholder="San Francisco"
+                    placeholder="Tampa"
                     className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                     required
                   />
@@ -264,7 +264,7 @@ const CreateListing: React.FC<CreateListingProps> = ({ onClose, onSubmit }) => {
                     name="state"
                     value={formData.state}
                     onChange={handleInputChange}
-                    placeholder="CA"
+                    placeholder="FL"
                     className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                     required
                   />
@@ -283,7 +283,7 @@ const CreateListing: React.FC<CreateListingProps> = ({ onClose, onSubmit }) => {
                     name="zipCode"
                     value={formData.zipCode}
                     onChange={handleInputChange}
-                    placeholder="94102"
+                    placeholder="33606"
                     className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                     required
                   />
