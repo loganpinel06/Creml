@@ -12,8 +12,9 @@ export default function Header() {
   //state variables
   const [modal, setModal] = useState("");
   //this state will track the user's authentication status - "valid" if authenticated, "invalid" if not
+  const [isAuth, setIsAuth] = useState<boolean | null>(null);
   //if the user is a broker, we can also set this to "broker" to show broker-specific UI elements in the header
-  const [auth, setAuth] = useState("");
+  const [isBroker, setIsBroker] = useState<boolean>(false);
 
   //create a Supabase client instance
   const supabase = createClient();
@@ -38,9 +39,9 @@ export default function Header() {
   useEffect(() => {
     supabase.auth.getUser().then(({ data: { user }, error }) => {
       if (user) {
-        setAuth("valid");
+        setIsAuth(true);
       } else {
-        setAuth("invalid");
+        setIsAuth(false);
       }
     });
   }, []);
@@ -69,29 +70,37 @@ export default function Header() {
               >
                 Contact
               </a>
-              {/* only show login link if not authenticated */}
-              {auth !== "valid" && (
-                <a
-                  href="/login"
-                  className="text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium"
-                >
-                  Sign In
-                </a>
-              )}
+              {/* Control auth specific attributes of the header */}
               {/* Get Started Button if not auth or Log out button if auth */}
-              {auth === "valid" ? (
-                <button
-                  onClick={handleLogout}
-                  className="bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 transition-colors cursor-pointer"
-                >
-                  Log Out
-                </button>
-              ) : (
-                <Link href="/register">
-                  <button className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors cursor-pointer">
-                    Get Started
+              {isAuth === true ? (
+                <>
+                  <a
+                    href="/dashboard"
+                    className="text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium"
+                  >
+                    Dashboard
+                  </a>
+                  <button
+                    onClick={handleLogout}
+                    className="bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 transition-colors cursor-pointer"
+                  >
+                    Log Out
                   </button>
-                </Link>
+                </>
+              ) : (
+                <>
+                  <a
+                    href="/login"
+                    className="text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium"
+                  >
+                    Sign In
+                  </a>
+                  <Link href="/register">
+                    <button className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors cursor-pointer">
+                      Get Started
+                    </button>
+                  </Link>
+                </>
               )}
             </div>
           </div>

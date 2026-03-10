@@ -258,7 +258,7 @@ export default function SignUpForm({ selectedPlan = "free" }: SignUpFormProps) {
                 htmlFor="phone"
                 className="block text-sm font-medium text-gray-700 mb-2"
               >
-                Phone Number (Optional)
+                Phone Number <span className="text-red-500">(Optional)</span>
               </label>
               <input
                 type="tel"
@@ -341,7 +341,7 @@ export default function SignUpForm({ selectedPlan = "free" }: SignUpFormProps) {
               >
                 Privacy Policy
               </a>
-              *
+              <span className="text-red-500">*</span>
             </label>
           </div>
 
